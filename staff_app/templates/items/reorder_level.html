@@ -1,0 +1,47 @@
+{% extends 'base_items.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-3 bg-light sidebar">
+            <h2>Actions</h2>
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary btn-block">Export</button>
+            </div>
+        </div>
+
+        <!-- Main Section -->
+        <div class="col-md-9">
+            <h2>Items that Reach Their Reorder Level</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Reorder Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in  products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.reorder_level }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                      <td colspan="4">No products found.</td>
+                    </tr>
+                    {% endfor %}
+
+                    <!-- Add more table rows for each product that reaches the reorder level -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% block endblock %}

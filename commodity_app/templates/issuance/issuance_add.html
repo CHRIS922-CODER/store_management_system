@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Issue {{ product }}</h2>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_product">Product:</label>
+        <input type="hidden" id="id_product" name="product" value="{{ product.id }}">
+        <input type="text" value="{{ product.name }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="id_quantity_issued">Quantity Issued:</label>
+        {{ form.quantity_issued }}
+      </div>
+      <div class="form-group">
+        <label for="id_date_issued">Date Issued:</label>
+        <input type="hidden" id="id_date_issued" name="date_issued" value="{{ form.initial.date_issued }}">
+        <input type="text"  value="{{ form.initial.date_issued }}" disabled>
+        <!-- <span>{{ form.initial.date_issued }}</span> -->
+      </div>
+      <div class="form-group">
+        <label for="id_status">Status:</label>
+        {{ form.status }}
+      </div>
+      <div class="form-group">
+        <label for="id_user">Staff:</label>
+        <input type="hidden" id="id_user" name="user" value="{{ form.initial.user }}">
+        <input type="text" value="{{ form.initial.user }}" disabled>
+      </div>
+      <div class="form-group">
+        <label for="id_department">Department:</label>
+        {{ form.department }}
+      </div>
+      <!-- Add more fields for issuance information if needed -->
+      <div>
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="{% url 'issuance_list' %}" class="btn btn-secondary">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,164 @@
+/* styles.css */
+
+/* Custom Navbar */
+.custom-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aqua; /* Updated navbar background color */
+  padding: 10px 20px;
+  color: white; /* Text color for navbar links */
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: aqua; /* Updated sidebar background color */
+}
+
+.tab {
+  display: block;
+  cursor: pointer;
+  padding: 25px 15px;
+  margin-bottom: 5px;
+  background-color: #00BFFF;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.tab.active {
+  background-color: #0000FF;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background-color: aqua; /* Updated footer background color */
+  padding: 10px;
+  text-align: center;
+  color: #333; /* Text color for footer content */
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Additional Styles */
+.container-fluid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.sidebar,
+.col-md-9 {
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+
+  .col-md-9 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.table-container {
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.active{
+  background-color: #68dfcb;
+  color:#fff;
+}
+
+.form-group{
+  padding:15px;
+  margin:10px;
+}
+.btn-primary{
+  margin-left:8rem;
+}
+.side_bar {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.commodity_logo{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+.container-fluid .row{
+  margin-left:0;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.success{
+  list-style:none;
+  background-color: #0000FF;
+  color:white;
+  text-align:center;
+}
+
+
+ul.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align:center;
+}
+
+ul.messages li.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+ul.messages li.message.success {
+  background-color: #c3e6cb;
+  color: #155724;
+}
+
+ul.messages li.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+ul.messages li.message.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+ul.messages li.message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  text-align:center;
+}
+

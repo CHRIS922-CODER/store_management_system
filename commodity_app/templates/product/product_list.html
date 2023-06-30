@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+  <h2>Product List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Category</th>
+        <th>Reorder_level</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        {% if product.quantity == 0 %}
+        <td><a href="#">{{ product.name }}</a></td>
+        {% else %}
+        <td><a href="{% url 'add_issuance' product_id=product.id %}"> {{ product.name }}</a></td>
+        {% endif %}
+
+        {% if product.quantity <= product.reorder_level %}
+        <td style="background-color:orange;">{{ product.quantity }}</td>
+        {% else %}
+        <td>{{ product.quantity}}</td>
+        {% endif %}
+
+        <td>{{ product.category }}</td>
+        <td><a href="{% url 'reorder_level' product.id %}">{{ product.reorder_level }}</a></td>
+        <td>
+          <a
+            href="{% url 'product_edit' product.id %}"
+            class="btn btn-sm btn-primary"
+            >Edit</a
+          >
+          <a
+            href="{% url 'product_delete' product.id %}"
+            class="btn btn-sm btn-danger"
+            >Delete</a
+          >
+        </td>
+      </tr>
+
+      {% empty %}
+      <tr>
+        <td colspan="4">No products found.</td>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="text-center">
+    <a href="{% url 'export_to_pdf_product' %}" class="btn btn-primary" target="_blank">Export to PDF</a>
+  </div>
+</div>
+{% endblock %}

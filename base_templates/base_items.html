@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    .table-container {
+      max-height: 400px; /* Adjust the maximum height as needed */
+      overflow-y: auto;
+    }
+
+    ul.messages {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul.messages li.message {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    ul.messages li.message.success {
+      background-color: #c3e6cb;
+      color: #155724;
+      text-align: center;
+    }
+
+    ul.messages li.message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      text-align: center;
+    }
+
+    ul.messages li.message.info {
+      background-color: #d1ecf1;
+      color: #0c5460;
+      text-align: center;
+    }
+
+    ul.messages li.message.warning {
+      background-color: #fff3cd;
+      color: #856404;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+              {% if request.user.is_authenticated %}
+              <span class="navbar-text"
+                >Welcome, {{ request.session.username }}</span
+              >
+              {% else %}
+              <span class="navbar-text">Welcome, stranger </span>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="container mt-4">{% block content %} {% endblock %}</div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

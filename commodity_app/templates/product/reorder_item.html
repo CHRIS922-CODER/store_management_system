@@ -1,0 +1,19 @@
+{% extends  'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Edit {{ product.name }}</h2>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+      </div>
+      <div class="form-group">
+        <label for="id_category">Reorder Level:</label>
+        {{ form.reorder_level }}
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+{% endblock %}

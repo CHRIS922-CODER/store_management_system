@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Edit Department</h2>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+      </div>
+      <!-- Add more fields for department information if needed -->
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{% url 'department_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

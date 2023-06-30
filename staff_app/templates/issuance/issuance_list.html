@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Issuance List</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity Issued</th>
+          <th>Date Issued</th>
+          <th>Status</th>
+          <th>Staff</th>
+          <th>Department</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody> 
+        {% for issuance in issuances %}
+        <tr>
+          <td>{{ issuance.product }}</td>
+          <td>{{ issuance.quantity_issued }}</td>
+          <td>{{ issuance.date_issued }}</td>
+          <td>{{ issuance.status }}</td>
+          <td>{{ issuance.user }}</td>
+          <td>{{ issuance.department }}</td>
+          <td>
+            <a href="{% url 'issuance_edit' issuance.id %}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="{% url 'issuance_delete' issuance.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="7">No issuances found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

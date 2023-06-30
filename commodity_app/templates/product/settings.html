@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+  <h1>Store Settings</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Product Name</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Manage product names</p>
+          <a href="{% url 'product_name' %}" class="btn btn-primary">Go to Product Name Settings</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Category</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Manage categories</p>
+          <a href="{% url 'add_category' %}" class="btn btn-primary">Go to Category Settings</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Department</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Manage Department</p>
+          <a href="{% url 'add_department' %}" class="btn btn-primary">Go to Department Settings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

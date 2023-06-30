@@ -1,0 +1,64 @@
+{% extends 'base_items.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 style="text-transform: uppercase;">Products in the Store</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="bg-light sidebar">
+                <h2 class="text-center">Search</h2>
+                <form action="" method="GET" style="width: auto; margin: 0 auto;">
+                    <!-- Product Name -->
+                    <div class="form-group">
+                        <label for="id_name">Product Name</label>
+                        {{ productFilter.form.name }}
+                    </div>
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="id_category">Category</label>
+                        {{ productFilter.form.category }}
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary mt-3">Export/Filter</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive table-container">
+                <table class="table table-bordered table-shadow">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in productFilter.qs %}
+                            <tr>
+                                {% if product.quantity == 0 %}
+                                <td><a href="#">{{ product.name }}</a></td>
+                                {% else %}
+                                <td><a href="{% url 'issuance_request' product_id=product.id %}">{{ product.name }}</a></td>
+                                {% endif %}
+                                <td>{{ product.quantity}}</td>
+                                <td>{{ product.category }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

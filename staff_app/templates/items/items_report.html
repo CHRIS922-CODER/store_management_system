@@ -1,0 +1,70 @@
+{% extends 'base_items.html' %}
+
+{% block title %}Store Receive Reports{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Store Receive Reports</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control" id="category">
+                            <option value="">All Categories</option>
+                            <!-- Add options for categories -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Product</label>
+                        <select class="form-control" id="product">
+                            <option value="">All Products</option>
+                            <!-- Add options for products -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startdate">Start Date</label>
+                        <input type="date" class="form-control" id="startdate">
+                    </div>
+                    <div class="form-group">
+                        <label for="enddate">End Date</label>
+                        <input type="date" class="form-control" id="enddate">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exportcsv">
+                        <label class="form-check-label" for="exportcsv">Export to CSV</label>
+                    </div>
+                    <button type="button" class="btn btn-primary">Reorder Level Report</button>
+                    <button type="button" class="btn btn-primary">View Issue Report</button>
+                    <button type="button" class="btn btn-primary">View Receive Report</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Store Receive Report Details</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Receiver</th>
+                            <th>Supplier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add table rows with product details -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

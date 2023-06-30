@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container">
+  <h2>Product Out Of Stock </h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity}}</td>
+        <td>{{ product.category }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">No products found.</td>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="text-center">
+    <a href="{% url 'export_to_pdf_product_out_of_stock' %}" class="btn btn-primary" target="_blank">Export to PDF</a>
+  </div>
+</div>
+{% endblock %}
+
+
