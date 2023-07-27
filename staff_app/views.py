@@ -68,7 +68,12 @@ def issuance_editing(request, id):
             form.save()
             return redirect("issuance_history")
     else:
-        form = IssuanceForm(instance=issuance)
+        initial_data = {
+            'issuance': issuance.id if issuance else None,
+            'user': request.user.pk if request.user.is_authenticated else None,
+            'date_issued': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        form = IssuanceForm(instance=issuance,initial=initial_data)
         context = {'form': form, 'issuance': issuance}
         return render(request, 'items/issuance_editing.html', context)
 
